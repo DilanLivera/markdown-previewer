@@ -1,0 +1,22 @@
+.MarkdownPriviewer-container {
+  width: 80%;
+  margin: 0 auto;
+  border: 2px solid lightslategrey;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.MarkdownPriviewer-container textarea {
+  margin: 10px 0;
+  padding: 10px;
+  min-height: 350px;
+  color: red;
+}
+
+.MarkdownPriviewer-output {
+  margin: 15px 0;
+  padding: 10px;
+  border: 2px solid lightcoral;
+  min-height: 350px;
+}
