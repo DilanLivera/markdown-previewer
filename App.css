@@ -1,7 +1,7 @@
 .MarkdownPriviewer-container {
   width: 80%;
   margin: 0 auto;
-  /* border: 2px solid lightslategrey; */
+  border: 2px solid lightslategrey;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,33 +9,29 @@
   padding: 15px;
 }
 
-.MarkdownPriviewer-editor {
-  width: 50%;
-  border: 2px solid lightcoral;
+/* Editor */
+.Editor {
+  width: 65%;
+  border: 2px solid plum;
+  margin: 10px;
+  padding: 10px;
 }
 
-.maximizeWidth {
+.Previewer {
+  width: 80%;
+  border: 2px solid plum;
+  margin: 10px;
+  padding: 10px;
+}
+
+/* maximize-btn click */
+
+.maximize {
   width: 100%;
 }
 
-.MarkdownPriviewer-container textarea {
-  margin: 0 0;
-  padding: 10px;
-  width: 96%;
-  min-height: 350px;
-}
-
-.MarkdownPriviewer-preview {
-  width: 70%;
-  border: 2px solid lightcoral;
-}
-
-.MarkdownPriviewer-output {
-  align-self: center;
-  margin: 15px 0;
-  padding: 10px;
-  min-height: 350px;
-  background-color: lightseagreen;
+.hide {
+  display: none;
 }
 
 /* styles for elements in MarkDown */

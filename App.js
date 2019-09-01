@@ -11,17 +11,17 @@ marked.setOptions({
 
 const Editor = (props) => {
   return (
-    <div width={ props.width } >
-      <button onClick={ props.onClick }>X</button>
+    <div width={ props.width } className={ `Editor ${ props.classList }` } >
+      <button onClick={ props.onClick } name="editor-maximize-btn">X</button>
       <textarea onChange={ props.onChange } defaultValue={ props.text }></textarea>
     </div>
   )
 }
 
-const Previewer = ({ text, width, onClick }) => {
+const Previewer = ({ text, width, onClick, classList }) => {
   return (
-    <div width={ width } >
-      <button onClick={ onClick }>X</button>
+    <div width={ width } className={ `Previewer ${ classList }` }  >
+      <button onClick={ onClick } name="preview-maximize-btn">X</button>
       <div dangerouslySetInnerHTML={{ __html: text }} defaultValue={ text }></div>
     </div>
   )
@@ -70,17 +70,25 @@ class MarkdownPriviewer extends React.Component {
   }
 
   render(){
+    let editorClassList = (!this.state.editorWindowMinimized) ?  "maximize " : "";
+    editorClassList += (!this.state.previewWindowMinimized) ?  "hide " : "";
+
+    let previewClassList = (!this.state.previewWindowMinimized) ?  "maximize " : "";
+    previewClassList += (!this.state.editorWindowMinimized) ?  "hide " : "";
+
     return (
       <div className="MarkdownPriviewer-container">
         <Editor
           text={ this.props.preview }  
           onClick={ this.handleClick } 
           onChange={ this.handleKeyDown }
+          classList={ editorClassList }
           width={ 600 } 
         />
         <Previewer
           text={ this.state.markdownText }  
-          onClick={ this.handleClick } 
+          onClick={ this.handleClick }
+          classList={ previewClassList }
           width={ 600 } 
         />
       </div>
