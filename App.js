@@ -11,17 +11,17 @@ marked.setOptions({
 
 const Editor = (props) => {
   return (
-    <div width={ props.width } className={ `Editor ${ props.classList }` } >
-      <button onClick={ props.onClick } name="editor-maximize-btn">X</button>
+    <div className={ `Editor ${ props.classList }` } >
+      <button onClick={ props.onClick } name="editor-maximize-btn" className={ props.icon }></button>
       <textarea onChange={ props.onChange } defaultValue={ props.text }></textarea>
     </div>
   )
 }
 
-const Previewer = ({ text, width, onClick, classList }) => {
+const Previewer = ({ text, onClick, classList, icon }) => {
   return (
-    <div width={ width } className={ `Previewer ${ classList }` }  >
-      <button onClick={ onClick } name="preview-maximize-btn">X</button>
+    <div className={ `Previewer ${ classList }` }  >
+      <button onClick={ onClick } name="preview-maximize-btn" className={ icon }></button>
       <div dangerouslySetInnerHTML={{ __html: text }} defaultValue={ text }></div>
     </div>
   )
@@ -76,6 +76,9 @@ class MarkdownPriviewer extends React.Component {
     let previewClassList = (!this.state.previewWindowMinimized) ?  "maximize " : "";
     previewClassList += (!this.state.editorWindowMinimized) ?  "hide " : "";
 
+    let editorIcon = (!this.state.editorWindowMinimized) ?  "fa fa-compress" : "fa fa-arrows-alt";
+    let previewIcon = (!this.state.previewWindowMinimized) ?  "fa fa-compress" : "fa fa-arrows-alt";;
+
     return (
       <div className="MarkdownPriviewer-container">
         <Editor
@@ -83,13 +86,13 @@ class MarkdownPriviewer extends React.Component {
           onClick={ this.handleClick } 
           onChange={ this.handleKeyDown }
           classList={ editorClassList }
-          width={ 600 } 
+          icon={ editorIcon }
         />
         <Previewer
           text={ this.state.markdownText }  
           onClick={ this.handleClick }
           classList={ previewClassList }
-          width={ 600 } 
+          icon={ previewIcon }
         />
       </div>
     );
